@@ -19,16 +19,14 @@ public class MyBuildScript : DefaultBuildScript
     {
         context.CreateTarget("Fetch.FlubuCore.Version")
             .Do(UpdateFlubuCoreNugetPackageToLatest);
-
+        
         context
             .CreateTarget("rebuild")
             .SetAsDefault()
             .SetDescription("Rebuilds the solution")
-            .CoreTaskExtensions()
-            .DotnetRestore(x => x.WithArguments("FlubuExample"))
-            .DotnetBuild("FlubuExample")
-            .DotnetPublish("FlubuExample")
-            .CreateZipPackageFromProjects("FlubuExample", "netcoreapp1.0", "FlubuExample" );
+            .AddCoreTask(x => x. Restore("FlubuExample"))
+            .AddCoreTask(x => x.Build("FlubuExample"))
+            .AddCoreTask(x => x.Publish("FlubuExample"));
     }
 
     private void UpdateFlubuCoreNugetPackageToLatest(ITaskContext context)
