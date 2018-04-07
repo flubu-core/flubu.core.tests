@@ -34,12 +34,11 @@ public class MyBuildScript : DefaultBuildScript
             .CreateTarget("compile")
             .SetDescription("Compiles the VS solution")
             .AddCoreTask(x => x.ExecuteDotnetTask("restore").WithArguments("FlubuExample.sln"))
-            .CoreTaskExtensions().DotnetBuild("FlubuExample.sln")
-            .BackToTarget();
+            .AddCoreTask(x => x.Build("FlubuExample.sln"));
 
         var package = context
             .CreateTarget("Package")
-            .AddCoreTask(x => x.Publish("FlubuExample"));
+            .AddCoreTask(x => x.Publish("FlubuExample"));            
 
         //// Can be used instead of CreateZipPackageFromProject. See MVC_NET4.61 project for full example of PackageTask
         //// context.CreateTarget("Package2").AddTask(x => x.PackageTask("FlubuExample"));
