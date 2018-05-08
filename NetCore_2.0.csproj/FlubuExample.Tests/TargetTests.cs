@@ -1,6 +1,5 @@
 ﻿using System.Xml;
 using Xunit;
-using NUnit;
 namespace Flubu.Tests
 {
     public class TargetTests
@@ -15,7 +14,6 @@ namespace Flubu.Tests
         public void Test2()
         {
             Assert.Equal(1, 1);
-            var flName = typeof(NUnit.Framework.Assert).AssemblyQualifiedName;
         }
 
         [Fact]
