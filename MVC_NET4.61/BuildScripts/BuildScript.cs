@@ -10,7 +10,7 @@ using FlubuCore.Tasks.Iis;
 using Newtonsoft.Json;
 
 //#ref System.Xml.XmlDocument, System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-//#ass .\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll
+//#ass .\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll
 //#imp .\BuildScripts\BuildHelper.cs
 
 /// <summary>
