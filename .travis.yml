@@ -1,0 +1,26 @@
+language: csharp
+os: 
+  - linux
+
+sudo: required
+mono: none
+dotnet: 2.1.300
+dist: trusty
+
+addons:
+  apt:
+    sources:
+    - sourceline: 'deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main'
+      key_url: 'https://packages.microsoft.com/keys/microsoft.asc'
+    packages:
+     - libunwind8
+
+  
+git:
+  depth: false
+
+before_script: cd NetCore_1.1.csproj
+  
+script:
+- dotnet restore BuildScript.csproj
+- dotnet flubu -s=BuildScript/BuildScript.cs
