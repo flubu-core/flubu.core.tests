@@ -9,10 +9,12 @@ using FlubuCore.Context;
 using FlubuCore.Scripting;
 using FlubuCore.Tasks.Iis;
 using Newtonsoft.Json;
+using RestSharp;
 
 //#ref System.Xml.XmlDocument, System.Xml.XmlDocument, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
 //#ass ./Packages/Newtonsoft.Json.9.0.1/lib/netstandard1.0/Newtonsoft.Json.dll
 //#imp ./BuildScript/BuildScriptHelper.cs
+//#nuget RestSharp, 106.3.1
 
 //// Examine build scripts in other projects(especialy mvc .net461 example) for more use cases. Also see FlubuCore buildscript on https://github.com/flubu-core/flubu.core/blob/master/BuildScript/BuildScript.cs
 public class MyBuildScript : DefaultBuildScript
@@ -123,5 +125,6 @@ public class MyBuildScript : DefaultBuildScript
 
 
         JsonConvert.SerializeObject(example);
+		var client = new RestClient("http://example.com");
     }
 }
