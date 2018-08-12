@@ -9,7 +9,6 @@ using FlubuCore.Context;
 using FlubuCore.Context.FluentInterface.TaskExtensions;
 using FlubuCore.Scripting;
 using FlubuCore.Tasks.Iis;
-using FlubuCore.WebApi.Client;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -37,7 +36,7 @@ public class MyBuildScript : DefaultBuildScript
             .CreateTarget("compile")
             .SetDescription("Compiles the VS solution")
             .AddCoreTask(x => x.ExecuteDotnetTask("restore").WithArguments("FlubuExample.sln"))
-            .AddCoreTask(x => x.Build("FlubuExample.sln");
+            .AddCoreTask(x => x.Build("FlubuExample.sln"));
 
         var package = context
             .CreateTarget("Package")
