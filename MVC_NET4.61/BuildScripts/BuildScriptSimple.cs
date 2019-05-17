@@ -3,6 +3,7 @@ using FlubuCore.Context;
 using FlubuCore.Packaging;
 using FlubuCore.Packaging.Filters;
 using FlubuCore.Scripting;
+using FlubuCore.Tasks.Testing;
 
 /// <summary>
 /// In this build script default targets(compile etc are included. 
@@ -29,7 +30,7 @@ public class BuildScriptSimple : DefaultBuildScript
 
         var unitTest = session.CreateTarget("unit.tests")
             .SetDescription("Runs unit tests")
-            .AddTask(x => x.NUnitTaskForNunitV3("FlubuExample.Tests"));
+            .AddTask(x => x.NUnitTask(NunitCmdOptions.V3, "FlubuExample.Tests"));
 
         var package = session.CreateTarget("Package")
             .SetDescription("Packages mvc example for deployment")

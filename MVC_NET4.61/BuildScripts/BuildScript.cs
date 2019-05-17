@@ -7,6 +7,7 @@ using FlubuCore.Packaging;
 using FlubuCore.Packaging.Filters;
 using FlubuCore.Scripting;
 using FlubuCore.Tasks.Iis;
+using FlubuCore.Tasks.Testing;
 using Newtonsoft.Json;
 
 //#ref System.Xml.XmlDocument, System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
@@ -56,8 +57,8 @@ public class BuildScript : DefaultBuildScript
             .SetDescription("Runs unit tests")
             .SetAsDefault()
             .DependsOn(loadSolution)
-            .AddTask(x => x.NUnitTaskForNunitV3("FlubuExample.Tests"))
-            .AddTask(x => x.NUnitTaskForNunitV3("FlubuExample.Tests2"));
+            .AddTask(x => x.NUnitTask(NunitCmdOptions.V3, "FlubuExample.Tests"))
+            .AddTask(x => x.NUnitTask(NunitCmdOptions.V3, "FlubuExample.Tests2"));
         
         var runExternalProgramExample = session.CreateTarget("abc").AddTask(x => x.RunProgramTask(@"packages\LibZ.Tool\1.2.0\tools\libz.exe"));
 
