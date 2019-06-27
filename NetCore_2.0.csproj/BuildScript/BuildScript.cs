@@ -90,7 +90,7 @@ public class MyBuildScript : DefaultBuildScript
         var version = fetchBuildVersionFromFileTask.Execute(context);
         context.Tasks()
                 .UpdateXmlFileTask("BuildScript.csproj")
-                .UpdatePath("//DotNetCliToolReference[@Version]/@Version", version.ToString(3))
+                .UpdatePath("//DotNetCliToolReference[@Version]/@Version", version.Version.ToString(3))
                 .Execute(context);
     }
 
