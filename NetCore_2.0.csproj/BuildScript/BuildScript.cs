@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Runtime.InteropServices;
 using FlubuCore.Context;
 using FlubuCore.Context.FluentInterface.TaskExtensions;
 using FlubuCore.Scripting;
+using FlubuCore.Scripting.Attributes;
 using FlubuCore.Tasks.Iis;
 using Newtonsoft.Json;
 using RestSharp;
 
-//#ref System.Xml.XmlDocument, System.Xml.XmlDocument, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
-//#imp ./BuildScript/BuildScriptHelper.cs
-//#nuget RestSharp, 106.3.1
-
 //// Examine build scripts in other projects(especialy mvc .net461 example) for more use cases. Also see FlubuCore buildscript on https://github.com/flubu-core/flubu.core/blob/master/BuildScript/BuildScript.cs
+[Include("./BuildScript/BuildScriptHelper.cs")]
 public class MyBuildScript : DefaultBuildScript
 {
     protected override void ConfigureBuildProperties(IBuildPropertiesContext context)
@@ -96,7 +88,7 @@ public class MyBuildScript : DefaultBuildScript
 
     private void DoExample(ITaskContext context)
     {
-        XmlDocument xml = new XmlDocument(); //// Just an a example that external reference works.
+        RestClient client = new RestClient();
         BuildScriptHelper.SomeMethod(); //// Just an a example that referencing other cs file works.
 
         ////Example of predefined propertie. Propertie are predefined by flubu.

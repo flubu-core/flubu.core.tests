@@ -6,19 +6,14 @@ using FlubuCore.Context;
 using FlubuCore.Packaging;
 using FlubuCore.Packaging.Filters;
 using FlubuCore.Scripting;
+using FlubuCore.Scripting.Attributes;
 using FlubuCore.Tasks.Iis;
 using FlubuCore.Tasks.Testing;
 using Newtonsoft.Json;
 
-//#ref System.Xml.XmlDocument, System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-//#ass .\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll
-//#imp .\BuildScripts\BuildHelper.cs
-
-/// <summary>
-/// Flubu build script example for .net. Flubu Default targets for .net are not included. 
-/// Most of them are created in this buildScipt tho. (load.solution, generate,commonAssinfo, compile) as a build script example
-/// With Default targets included see BuildScriptWithDt.cs.
-/// </summary>
+[Include(@".\BuildScripts\BuildHelper.cs")]
+[Reference("System.Xml.XmlDocument, System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+[Assembly(@".\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll")]
 public class BuildScript : DefaultBuildScript
 {
     protected override void ConfigureBuildProperties(IBuildPropertiesContext context)
@@ -110,8 +105,8 @@ public class BuildScript : DefaultBuildScript
         var version = context.Tasks().FetchBuildVersionFromFileTask().Execute(context);
         int svnRevisionNumber = 0; //in real scenario you would fetch revision number from subversion.
         int buildNumber = 0; // in real scenario you would fetch build version from build server.
-        version = new System.Version(version.Major, version.Minor, buildNumber, svnRevisionNumber);
-        context.Properties.Set(BuildProps.BuildVersion, version);
+        version.Version = new System.Version(version.Version.Major, version.Version.Minor, buildNumber, svnRevisionNumber);
+        context.Properties.Set(BuildProps.BuildVersion, version.Version);
     }
  
     public static void TargetPackage(ITaskContext context)

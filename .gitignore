@@ -60,3 +60,4 @@ NetCore_2.0.csproj/FlubuExample/obj/
 NetCore_2.0.csproj/obj/
 NetCore_2.0.csproj/output/
 NetCore_2.0.csproj/BuildScript.csproj.user
+/NetCore_2.0.csproj/BuildScript/bin
