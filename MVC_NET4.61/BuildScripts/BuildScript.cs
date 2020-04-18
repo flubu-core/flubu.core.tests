@@ -105,8 +105,8 @@ public class BuildScript : DefaultBuildScript
         var version = context.Tasks().FetchBuildVersionFromFileTask().Execute(context);
         int svnRevisionNumber = 0; //in real scenario you would fetch revision number from subversion.
         int buildNumber = 0; // in real scenario you would fetch build version from build server.
-        version.Version = new System.Version(version.Version.Major, version.Version.Minor, buildNumber, svnRevisionNumber);
-        context.Properties.Set(BuildProps.BuildVersion, version.Version);
+        version.Version =  new System.Version(version.Version.Major, version.Version.Minor, buildNumber, svnRevisionNumber);
+        context.Properties.Set(BuildProps.BuildVersion, version);
     }
  
     public static void TargetPackage(ITaskContext context)
