@@ -21,7 +21,7 @@ public class BuildScript : DefaultBuildScript
         context.Properties.Set(BuildProps.NUnitConsolePath,
             @"packages\NUnit.ConsoleRunner.3.6.0\tools\nunit3-console.exe");
         context.Properties.Set(BuildProps.ProductId, "FlubuExample");
-        context.Properties.Set(BuildProps.ProductName, "FlubuExample");
+        context.Properties.Set(DotNetBuildProps.ProductName, "FlubuExample");
         context.Properties.Set(BuildProps.SolutionFileName, "FlubuExample.sln");
         context.Properties.Set(BuildProps.BuildConfiguration, "Release");
     }
